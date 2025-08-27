@@ -1218,3 +1218,63 @@ tbody tr:hover {
     padding: 6px 8px;
   }
 }
+
+/* ===== Professional Transaction Table ===== */
+#transactions-tab table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+/* หัวตาราง */
+#transactions-tab th {
+  background: #E6F9F3; /* เขียวมิ้นอ่อน */
+  color: var(--primary-dark);
+  font-weight: 600;
+  text-align: center;
+  padding: 12px 10px;
+  border-bottom: 2px solid var(--primary-light);
+}
+
+/* เซลล์ */
+#transactions-tab td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* เส้นแบ่งแนวตั้ง */
+#transactions-tab th:not(:last-child),
+#transactions-tab td:not(:last-child) {
+  border-right: 1px solid var(--border);
+}
+
+/* แถวสลับสี */
+#transactions-tab tbody tr:nth-child(even) {
+  background: #FAFCFB;
+}
+
+/* Hover effect */
+#transactions-tab tbody tr:hover {
+  background: rgba(0,200,151,0.08);
+}
+
+/* มุมโค้ง */
+#transactions-tab thead tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+#transactions-tab thead tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+#transactions-tab tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+#transactions-tab tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
