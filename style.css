@@ -1171,110 +1171,37 @@ tbody tr:hover {
 .payment-info::-webkit-scrollbar-thumb:hover { background: #79cbb3; }
 .payment-info::-webkit-scrollbar-track { background: #f2f2f2; }
 
-/* ===== Improve Transactions Table on Mobile ===== */
-@media (max-width: 768px) {
-  #transactions-tab table {
-    font-size: 13px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  #transactions-tab th,
-  #transactions-tab td {
-    padding: 8px 10px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  #transactions-tab th {
-    background: #E6F9F3; /* เขียวมิ้นอ่อน */
-    color: var(--primary-dark);
-    font-weight: 600;
-    text-align: center;
-  }
-
-  #transactions-tab td {
-    text-align: center;
-    vertical-align: middle;
-  }
-
-  #transactions-tab tbody tr:nth-child(even) {
-    background: #FAFCFB; /* แถบสลับสี */
-  }
-
-  #transactions-tab tbody tr:hover {
-    background: rgba(0,200,151,0.08);
-  }
-}
-
-/* จอเล็กมาก (แนวตั้งมือถือเล็กกว่า 480px) */
-@media (max-width: 480px) {
-  #transactions-tab table {
-    font-size: 12px;
-  }
-
-  #transactions-tab th,
-  #transactions-tab td {
-    padding: 6px 8px;
-  }
-}
-
-/* ===== Professional Transaction Table ===== */
-#transactions-tab table {
+/* 📱 Force Table Layout for Mobile Portrait */
+#transactions-tab .table-wrap {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  font-size: 14px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* หัวตาราง */
-#transactions-tab th {
-  background: #E6F9F3; /* เขียวมิ้นอ่อน */
-  color: var(--primary-dark);
-  font-weight: 600;
-  text-align: center;
-  padding: 12px 10px;
-  border-bottom: 2px solid var(--primary-light);
+#transactions-tab table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 800px; /* กันไม่ให้คอลัมน์บีบจนแคบเกินไป */
+  table-layout: auto;
 }
 
-/* เซลล์ */
+#transactions-tab th,
 #transactions-tab td {
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--border);
+  padding: 8px 12px;
+  border: 1px solid var(--border);
   text-align: center;
   vertical-align: middle;
+  white-space: nowrap; /* กันข้อความตัดบรรทัด */
 }
 
-/* เส้นแบ่งแนวตั้ง */
-#transactions-tab th:not(:last-child),
-#transactions-tab td:not(:last-child) {
-  border-right: 1px solid var(--border);
+/* ปรับให้หัวตารางชัดเจน */
+#transactions-tab th {
+  background: #E6F9F3;
+  color: var(--primary-dark);
+  font-weight: 600;
 }
 
 /* แถวสลับสี */
 #transactions-tab tbody tr:nth-child(even) {
   background: #FAFCFB;
-}
-
-/* Hover effect */
-#transactions-tab tbody tr:hover {
-  background: rgba(0,200,151,0.08);
-}
-
-/* มุมโค้ง */
-#transactions-tab thead tr:first-child th:first-child {
-  border-top-left-radius: 10px;
-}
-#transactions-tab thead tr:first-child th:last-child {
-  border-top-right-radius: 10px;
-}
-#transactions-tab tbody tr:last-child td:first-child {
-  border-bottom-left-radius: 10px;
-}
-#transactions-tab tbody tr:last-child td:last-child {
-  border-bottom-right-radius: 10px;
 }
