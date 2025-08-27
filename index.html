@@ -483,7 +483,7 @@
         // มือแต่ละบ้าน/กลุ่ม
         const housesHtml = pool.houses && pool.houses.length ? 
           '<ul>' + pool.houses.map(h => 
-            `<li> ${escapeHtml(h.name)} ${h.hands} มือ × ${THB.format(h.amount)}</li>`
+            `<li>${escapeHtml(h.name)} มี ${h.hands} มือ × ${THB.format(h.amount)}</li>`
           ).join('') + '</ul>' 
           : '<div>ไม่มีข้อมูลบ้าน/กลุ่ม</div>';
 
@@ -493,7 +493,7 @@
           const txs = poolTransactions.filter(t => t.house === h.name && t.pay > 0);
           const paid = Math.floor(txs.reduce((s,t)=>s+Number(t.pay||0),0) / h.amount);
           totalPaidHands += paid;
-          return `<li>- ${escapeHtml(h.name)} ส่งแล้ว ${paid}/${h.hands} มือ</li>`;
+          return `<li>${escapeHtml(h.name)} ส่งแล้ว ${paid}/${h.hands} มือ</li>`;
         }).join('') : '';
 
         const progressPercent = totalHands>0 ? Math.min(Math.round((totalPaidHands/totalHands)*100),100) : 0;

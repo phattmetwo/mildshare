@@ -821,32 +821,6 @@ tbody tr:hover {
   background-color: rgba(0,200,151,0.08);
 }
 
-/* Responsive Table -> Card View */
-@media (max-width: 480px) {
-  table, thead, tbody, th, td, tr {
-    display: block;
-  }
-  thead { display: none; }
-  tbody tr {
-    margin-bottom: 12px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    padding: 12px;
-  }
-  td {
-    padding: 8px 0;
-    border-bottom: none;
-  }
-  td::before {
-    content: attr(data-label);
-    font-weight: 600;
-    color: var(--text-light);
-    display: block;
-    margin-bottom: 2px;
-  }
-}
-
 /* ====== Mint Minimal Professional Theme ====== */
 
 /* ปรับโทนสีใหม่ */
@@ -1204,4 +1178,21 @@ tbody tr:hover {
 /* แถวสลับสี */
 #transactions-tab tbody tr:nth-child(even) {
   background: #FAFCFB;
+}
+
+/* ✅ ปรับ table สำหรับมือถือแนวตั้งให้ยังคงเป็นตาราง แต่เลื่อนซ้ายขวาได้ */
+@media (max-width: 768px) {
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  th, td {
+    font-size: 13px;
+    padding: 8px 10px;
+    white-space: nowrap;
+  }
 }
