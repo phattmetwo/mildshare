@@ -1,5 +1,4 @@
-
-    :root {
+:root {
       --primary: #00C897;
       --primary-light: #A6F6E9;
       --primary-dark: #009D70;
@@ -575,9 +574,36 @@
     }
 
     .payment-info {
-      font-size: 0.8rem;
-    }
-
+  max-height: 140px;
+  overflow-y: auto;
+  margin-top: 6px;
+  padding: 8px;
+  border: 1px solid #cdeee2;
+  border-radius: 12px;
+  background: #f6fefb;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+    .payment-info .pool-badge {
+  font-size: 13px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  background: #eafaf5;
+  border: 1px solid #cdeee2;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+    .payment-info .pool-name {
+  font-weight: 600;
+  color: #2e7d6b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+    .payment-info .pool-amount {
+  color: #1e8e6a;
+  font-weight: 600;
+}
     .pool-badge {
       background-color: var(--bg);
       border-radius: 4px;
@@ -724,8 +750,15 @@
       }
       
       .payment-info {
-        display: none;
-      }
+  max-height: 140px;
+  overflow-y: auto;
+  margin-top: 6px;
+  padding: 8px;
+  border: 1px solid #cdeee2;
+  border-radius: 12px;
+  background: #f6fefb;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
     }
 
 /* ====== Professional Enhancements ====== */
@@ -788,28 +821,410 @@ tbody tr:hover {
   background-color: rgba(0,200,151,0.08);
 }
 
-/* Responsive Table -> Card View */
-@media (max-width: 480px) {
-  table, thead, tbody, th, td, tr {
-    display: block;
+/* ====== Mint Minimal Professional Theme ====== */
+
+/* ปรับโทนสีใหม่ */
+:root {
+  --primary: #00C897;
+  --primary-light: #A8E6CF;
+  --primary-dark: #009D70;
+  --bg: #F9FBFA;
+  --bg-panel: #FFFFFF;
+  --border: #E6F0EC;
+  --text: #2D3748;
+  --text-light: #6B7C85;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* ฟอนต์ */
+body {
+  font-family: 'Inter', 'Prompt', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* หัวข้อ */
+h1, h2, h3 {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+/* การ์ด */
+.panel, .pool-card, .report-card {
+  border-radius: 16px;
+  background: var(--bg-panel);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+/* ปุ่มหลัก */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  color: #fff;
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  transform: translateY(-2px);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Progress Bar Mint */
+.pool-progress {
+  width: 100%;
+  height: 14px;
+  background: #E8F7F2;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 6px;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-light), var(--primary));
+  border-radius: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.4s ease;
+}
+
+/* ตารางแบบ modern */
+table {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+th {
+  background: #F2FDF9;
+  color: var(--primary-dark);
+  font-size: 0.9rem;
+}
+tbody tr:nth-child(odd) {
+  background: #FAFCFB;
+}
+tbody tr:hover {
+  background: rgba(0,200,151,0.08);
+}
+
+/* Responsive สำหรับมือถือ/แท็บเล็ต */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    padding: 8px;
   }
-  thead { display: none; }
-  tbody tr {
-    margin-bottom: 12px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+  h1 {
+    font-size: 1.6rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+  }
+  .pool-card, .report-card, .panel {
+    padding: 16px;
+    border-radius: 14px;
+  }
+  button, input, select {
+    font-size: 14px;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  .pool-card, .report-card {
     padding: 12px;
   }
-  td {
-    padding: 8px 0;
-    border-bottom: none;
+  .progress-bar {
+    font-size: 11px;
   }
-  td::before {
-    content: attr(data-label);
-    font-weight: 600;
-    color: var(--text-light);
-    display: block;
-    margin-bottom: 2px;
+}
+
+/* ===== Report Box Styling ===== */
+.report-box {
+  max-height: 260px;          /* กำหนดความสูงสูงสุด */
+  overflow-y: auto;           /* เปิดให้เลื่อนขึ้นลง */
+  border: 1px solid var(--border);
+  border-radius: 12px;        /* มุมโค้ง */
+  padding: 12px 14px;
+  background: var(--bg-panel);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* scrollbar แบบ minimal professional */
+.report-box::-webkit-scrollbar {
+  width: 8px;
+}
+.report-box::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 4px;
+}
+.report-box::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+.report-box::-webkit-scrollbar-track {
+  background: #f2f2f2;
+}
+
+
+/* ===== Calendar Box Styling ===== */
+.calendar-box {
+  max-height: 320px;          /* ความสูงสูงสุด */
+  overflow-y: auto;           /* เลื่อนขึ้นลงได้ */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: var(--bg-panel);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* scrollbar แบบเดียวกับ report */
+.calendar-box::-webkit-scrollbar {
+  width: 8px;
+}
+.calendar-box::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 4px;
+}
+.calendar-box::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+.calendar-box::-webkit-scrollbar-track {
+  background: #f2f2f2;
+}
+
+
+/* ===== Calendar Item Styling ===== */
+.calendar-box .calendar-item {
+  background: #eafaf5;         /* เขียวมิ้นอ่อน */
+  border: 1px solid #cdeee2;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.calendar-box .calendar-item:hover {
+  background: #d6f5eb;         /* เขียวมิ้นสดขึ้น */
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.calendar-box .calendar-item .date {
+  font-weight: 600;
+  color: #2e7d6b;
+  margin-bottom: 4px;
+}
+
+.calendar-box .calendar-item .detail {
+  color: #444;
+  font-size: 13px;
+}
+
+
+/* ===== Calendar Styling (Final) ===== */
+
+/* กล่องวันในปฏิทิน */
+.calendar-day {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 6px;
+  background: #fff;
+  transition: background 0.2s ease;
+}
+
+/* ช่องวันปัจจุบัน */
+.calendar-day.today {
+  background: #eafaf5;
+  border: 2px solid #8dd3bd;
+}
+
+/* รายการภายในวัน */
+.calendar-event {
+  background: #eafaf5;        /* เขียวมิ้นอ่อน */
+  border: 1px solid #cdeee2;
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  transition: background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+/* hover effect */
+.calendar-event:hover {
+  background: #d6f5eb;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* ชื่อ + รายละเอียด */
+.calendar-event strong {
+  display: block;
+  font-weight: 600;
+  color: #2e7d6b;
+  margin-bottom: 2px;
+}
+.calendar-event span {
+  color: #444;
+}
+
+
+/* ===== Calendar Events Group Styling ===== */
+.calendar-events {
+  border: 1px solid #cdeee2;
+  border-radius: 10px;
+  background: #f6fefb;
+  padding: 8px;
+  margin-top: 6px;
+  max-height: 140px;   /* กันข้อความล้น */
+  overflow-y: auto;    /* เลื่อนขึ้นลงได้ */
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* ปรับให้แต่ละ event แยกกันอ่านง่าย */
+.calendar-events .calendar-event {
+  background: #eafaf5;
+  border: 1px solid #cdeee2;
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.calendar-events .calendar-event:last-child {
+  margin-bottom: 0;
+}
+
+.calendar-events .calendar-event:hover {
+  background: #d6f5eb;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* ชื่อ + รายละเอียด */
+.calendar-events .calendar-event strong {
+  display: block;
+  color: #2e7d6b;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.calendar-events .calendar-event span {
+  font-size: 12px;
+  color: #555;
+}
+
+.payment-info .pool-badge:hover {
+  background: #d6f5eb;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.payment-info::-webkit-scrollbar { width: 8px; }
+.payment-info::-webkit-scrollbar-thumb { background: #a0d9c6; border-radius: 4px; }
+.payment-info::-webkit-scrollbar-thumb:hover { background: #79cbb3; }
+.payment-info::-webkit-scrollbar-track { background: #f2f2f2; }
+
+/* 📱 Force Table Layout for Mobile Portrait */
+#transactions-tab .table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#transactions-tab table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 800px; /* กันไม่ให้คอลัมน์บีบจนแคบเกินไป */
+  table-layout: auto;
+}
+
+#transactions-tab th,
+#transactions-tab td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap; /* กันข้อความตัดบรรทัด */
+}
+
+/* ปรับให้หัวตารางชัดเจน */
+#transactions-tab th {
+  background: #E6F9F3;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+/* แถวสลับสี */
+#transactions-tab tbody tr:nth-child(even) {
+  background: #FAFCFB;
+}
+
+/* ✅ ปรับ table สำหรับมือถือแนวตั้งให้ยังคงเป็นตาราง แต่เลื่อนซ้ายขวาได้ */
+@media (max-width: 768px) {
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  th, td {
+    font-size: 13px;
+    padding: 8px 10px;
+    white-space: nowrap;
+  }
+}
+
+
+/* ✅ Orientation-specific adjustments */
+
+/* สำหรับมือถือแนวตั้ง */
+@media (max-width: 768px) and (orientation: portrait) {
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 700px; /* ป้องกันไม่ให้ตารางหดเกินไป */
+  }
+
+  th, td {
+    font-size: 13px;
+    padding: 8px 10px;
+    white-space: nowrap;
+  }
+}
+
+/* สำหรับมือถือแนวนอน */
+@media (max-width: 768px) and (orientation: landscape) {
+  table {
+    min-width: 100%;
+  }
+
+  th, td {
+    font-size: 14px;
+    padding: 10px 12px;
   }
 }
