@@ -1171,37 +1171,65 @@ tbody tr:hover {
 .payment-info::-webkit-scrollbar-thumb:hover { background: #79cbb3; }
 .payment-info::-webkit-scrollbar-track { background: #f2f2f2; }
 
-/* ===== Override: Transactions Table on Mobile ===== */
-@media (max-width: 480px) {
-  #transactions-tab table,
-  #transactions-tab thead,
-  #transactions-tab tbody,
+/* ===== Transactions Table Professional Style ===== */
+#transactions-tab table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Header */
+#transactions-tab th {
+  background: #E6F9F3; /* เขียวมิ้นอ่อน */
+  color: var(--primary-dark);
+  font-weight: 600;
+  padding: 10px 12px;
+  text-align: center;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Cell */
+#transactions-tab td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+/* Alignment */
+#transactions-tab td.right {
+  text-align: right;
+}
+#transactions-tab td.center {
+  text-align: center;
+}
+#transactions-tab td.left {
+  text-align: left;
+}
+
+/* Striped rows */
+#transactions-tab tbody tr:nth-child(even) {
+  background: #FAFCFB;
+}
+
+/* Hover effect */
+#transactions-tab tbody tr:hover {
+  background: rgba(0,200,151,0.05);
+  transition: background 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #transactions-tab table {
+    font-size: 13px;
+  }
   #transactions-tab th,
-  #transactions-tab td,
-  #transactions-tab tr {
-    display: table;
-    width: 100%;
-  }
-
-  #transactions-tab thead {
-    display: table-header-group;
-  }
-
-  #transactions-tab tbody tr {
-    background: transparent;
-    border-radius: 0;
-    box-shadow: none;
-    margin-bottom: 0;
-    padding: 0;
-  }
-
   #transactions-tab td {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-    text-align: left;
-  }
-
-  #transactions-tab td::before {
-    content: none !important;
+    padding: 6px 8px;
   }
 }
