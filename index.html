@@ -347,19 +347,23 @@
         const tr = document.createElement('tr');
         tr.dataset.id = r.id;
         tr.innerHTML = `
-          <td>${r.period ?? ''}</td>
-          <td>${formatDate(r.date)}</td>
-          <td>${escapeHtml(r.house||'')}</td>
-          <td>${escapeHtml(r.pool||'')}</td>
-          <td class="right">${badgeIn(fmtNum(r.receive))}</td>
-          <td class="right">${badgeOut(fmtNum(r.pay))}</td>
-          <td class="right">${r.net>=0? `<span class="pill in">${THB.format(r.net)}</span>` : `<span class="pill out">${THB.format(r.net)}</span>`}</td>
-          <td>${escapeHtml(r.note||'')}</td>
-          <td class="center">
-            <button class="btn-outline" data-act="edit">แก้ไข</button>
-            <button class="btn-danger" data-act="del">ลบ</button>
-          </td>
-        `;
+  <td data-label="งวดที่">${r.period ?? ''}</td>
+  <td data-label="วันที่">${formatDate(r.date)}</td>
+  <td data-label="ชื่อวงแชร์">${escapeHtml(r.pool||'')}</td>
+  <td data-label="บ้าน">${escapeHtml(r.house||'')}</td>
+  <td data-label="รับ" class="right">${badgeIn(fmtNum(r.receive))}</td>
+  <td data-label="จ่าย" class="right">${badgeOut(fmtNum(r.pay))}</td>
+  <td data-label="สุทธิ" class="right">
+    ${r.net>=0 
+      ? `<span class="pill in">${THB.format(r.net)}</span>` 
+      : `<span class="pill out">${THB.format(r.net)}</span>`}
+  </td>
+  <td data-label="หมายเหตุ">${escapeHtml(r.note||'')}</td>
+  <td data-label="การทำงาน" class="center">
+    <button class="btn-outline" data-act="edit">แก้ไข</button>
+    <button class="btn-danger" data-act="del">ลบ</button>
+  </td>
+`;
         tbody.appendChild(tr);
         tr.addEventListener('dblclick', ()=> startEdit(r.id));
         tr.addEventListener('click', (e)=>{
@@ -1129,18 +1133,23 @@ function updatePool(poolId) {
       const tr = [...$('#tableBody').children].find(x=>x.dataset.id===id);
       if(!tr) return;
       tr.innerHTML = `
-        <td data-label="งวดที่"><input class="w-sm" type="number" min="1" value="${r.period}"></td>
-        <td data-label="วันที่"><input class="w-lg" type="date" value="${r.date || ''}"></td>
-        <td data-label="ชื่อวงแชร์"><input class="w-md" type="text" value="${escapeHtml(r.pool||'')}" list="poolListEdit"></td>
-        <td data-label="บ้าน"><input class="w-md" type="text" value="${escapeHtml(r.house)}"></td>
-        <td data-label="รับ (฿)" class="right"><input class="w-md" type="number" step="0.01" min="0" value="${r.receive}"></td>
-        <td data-label="จ่าย (฿)" class="right"><input class="w-md" type="number" step="0.01" min="0" value="${r.pay}"></td>
-        <td data-label="สุทธิ" class="right"><span class="pill">จะแสดงหลังบันทึก</span></td>
-        <td data-label="หมายเหตุ"><input class="w-md" type="text" value="${escapeHtml(r.note||'')}"></td>
-        <td data-label="การทำงาน" class="center">
-          <button class="btn-success" data-act="save">บันทึก</button>
-          <button class="btn-outline" data-act="cancel">ยกเลิก</button>
-        </td>`;
+  <td data-label="งวดที่">${r.period ?? ''}</td>
+  <td data-label="วันที่">${formatDate(r.date)}</td>
+  <td data-label="ชื่อวงแชร์">${escapeHtml(r.pool||'')}</td>
+  <td data-label="บ้าน">${escapeHtml(r.house||'')}</td>
+  <td data-label="รับ" class="right">${badgeIn(fmtNum(r.receive))}</td>
+  <td data-label="จ่าย" class="right">${badgeOut(fmtNum(r.pay))}</td>
+  <td data-label="สุทธิ" class="right">
+    ${r.net>=0 
+      ? `<span class="pill in">${THB.format(r.net)}</span>` 
+      : `<span class="pill out">${THB.format(r.net)}</span>`}
+  </td>
+  <td data-label="หมายเหตุ">${escapeHtml(r.note||'')}</td>
+  <td data-label="การทำงาน" class="center">
+    <button class="btn-outline" data-act="edit">แก้ไข</button>
+    <button class="btn-danger" data-act="del">ลบ</button>
+  </td>
+`;
 
       // datalist
       const pools = Array.from(new Set(state.rows.map(r=>r.pool).filter(Boolean))).sort((a,b)=>a.localeCompare(b));
