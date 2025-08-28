@@ -821,6 +821,32 @@ tbody tr:hover {
   background-color: rgba(0,200,151,0.08);
 }
 
+/* Responsive Table -> Card View */
+@media (max-width: 480px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead { display: none; }
+  tbody tr {
+    margin-bottom: 12px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 12px;
+  }
+  td {
+    padding: 8px 0;
+    border-bottom: none;
+  }
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--text-light);
+    display: block;
+    margin-bottom: 2px;
+  }
+}
+
 /* ====== Mint Minimal Professional Theme ====== */
 
 /* ปรับโทนสีใหม่ */
@@ -1180,51 +1206,115 @@ tbody tr:hover {
   background: #FAFCFB;
 }
 
-/* ✅ ปรับ table สำหรับมือถือแนวตั้งให้ยังคงเป็นตาราง แต่เลื่อนซ้ายขวาได้ */
-@media (max-width: 768px) {
-  .table-wrap {
-    overflow-x: auto;
-  }
-
-  table {
-    min-width: 700px;
-  }
-
-  th, td {
-    font-size: 13px;
-    padding: 8px 10px;
-    white-space: nowrap;
-  }
-}
-
-
-/* ✅ Orientation-specific adjustments */
-
-/* สำหรับมือถือแนวตั้ง */
+/* ✅ ปฏิทินมือถือแนวตั้ง */
 @media (max-width: 768px) and (orientation: portrait) {
-  .table-wrap {
-    overflow-x: auto;
+  .calendar {
+    grid-template-columns: repeat(7, 1fr); /* คง 7 วัน */
+    gap: 4px;
   }
 
-  table {
-    min-width: 700px; /* ป้องกันไม่ให้ตารางหดเกินไป */
+  .calendar-day {
+    min-height: 70px;
+    padding: 2px;
+    font-size: 0.7rem;
   }
 
-  th, td {
-    font-size: 13px;
-    padding: 8px 10px;
-    white-space: nowrap;
+  .calendar-day .day-number {
+    font-size: 0.75rem;
+    margin-bottom: 2px;
+  }
+
+  .payment-info {
+    max-height: 80px;
+    overflow-y: auto;
+    font-size: 0.7rem;
+    padding: 4px;
+  }
+
+  .payment-info .pool-badge {
+    font-size: 0.65rem;
+    padding: 2px 4px;
+    margin-bottom: 2px;
   }
 }
 
-/* สำหรับมือถือแนวนอน */
-@media (max-width: 768px) and (orientation: landscape) {
-  table {
-    min-width: 100%;
-  }
+/* ===== Enhanced Responsive Layouts ===== */
 
-  th, td {
+/* สำหรับ iPad แนวตั้งและแท็บเล็ต (768px–1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    font-size: 15px;
+    padding: 12px;
+  }
+  header {
+    flex-direction: row;
+    text-align: left;
+  }
+  .pool-grid, .report-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .calendar {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+/* มือถือแนวนอน (481px–767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  body {
     font-size: 14px;
-    padding: 10px 12px;
+  }
+  header {
+    flex-direction: row;
+    gap: 12px;
+    text-align: left;
+  }
+  .tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .tab {
+    flex: 1 1 50%;
+    min-width: auto;
+  }
+  .pool-grid, .report-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* มือถือแนวตั้ง (≤480px) */
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  .tabs {
+    flex-direction: column;
+  }
+  .pool-grid, .report-grid {
+    grid-template-columns: 1fr;
+  }
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead { display: none; }
+  tbody tr {
+    margin-bottom: 12px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 12px;
+  }
+  td {
+    padding: 8px 0;
+    border-bottom: none;
+  }
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--text-light);
+    display: block;
+    margin-bottom: 2px;
   }
 }
